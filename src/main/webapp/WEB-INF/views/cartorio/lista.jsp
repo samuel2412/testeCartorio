@@ -38,7 +38,7 @@
 		<h3>Lista de cartórios</h3>
 
 
-		<div class="row header" style="text-align: center; color: green">
+		<div class="row header" style="text-align: center;">
 		</div>
 		<table id="myTable" class="table table-striped">
 			<thead>
@@ -57,7 +57,10 @@
 						<td>${cartorio.endereco}</td>
 						<td><a
 							href="${s:mvcUrl('CC#detalhe').arg(0, cartorio.id).build()}">
-								<i class="fas fa-info-circle"></i>
+						<button class="btn"
+						style="background-color: DodgerBlue; border: none; color: white; padding: 12px 16px; font-size: 16px; cursor: pointer;">
+						<i class="fas fa-info-circle">Detalhes</i>
+						</button>
 						</a></td>
 
 					</tr>
