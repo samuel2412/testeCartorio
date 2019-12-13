@@ -32,11 +32,11 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 	        encodingFilter.setEncoding("UTF-8");
 	        return new Filter[] {encodingFilter};
 	    }
-//		@Override
-//		public void onStartup(ServletContext servletContext) throws ServletException {
-//			super.onStartup(servletContext);
-//			servletContext.addListener(RequestContextListener.class);
-//			servletContext.setInitParameter("spring.profiles.active", "dev");
-//		}
+		@Override
+		public void onStartup(ServletContext servletContext) throws ServletException {
+			super.onStartup(servletContext);
+			servletContext.addListener(RequestContextListener.class);
+			servletContext.setInitParameter("spring.profiles.active", "dev");
+		}
 
 }

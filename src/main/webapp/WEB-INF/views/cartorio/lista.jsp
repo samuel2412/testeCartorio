@@ -55,13 +55,17 @@
 						<td>${cartorio.id}</td>
 						<td>${cartorio.nome}</td>
 						<td>${cartorio.endereco}</td>
-						<td><a
+						<td>
+						<div>
+						<a
 							href="${s:mvcUrl('CC#detalhe').arg(0, cartorio.id).build()}">
 						<button class="btn"
 						style="background-color: DodgerBlue; border: none; color: white; padding: 12px 16px; font-size: 16px; cursor: pointer;">
-						<i class="fas fa-info-circle">Detalhes</i>
+						<i class="fas fa-info-circle"></i> Detalhes
 						</button>
-						</a></td>
+						</a>
+						</div>
+						</td>
 
 					</tr>
 				</c:forEach>

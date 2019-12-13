@@ -38,7 +38,7 @@
 
 	<div class="container-sm" style="margin-bottom: 35px;">
 		<div class="jumbotron">
-			<div style="border-bottom: 2px solid #cccccc;">
+			<div style="border-bottom: 2px solid #cccccc; margin-bottom: 5px;">
 				<h4>${cartorio.nome}</h4>
 				<br>
 				<p>
@@ -55,13 +55,15 @@
 
 			<div
 				style="width: 80%; text-align: right; align-content: space-between;">
-				<a style="margin: 15px;"
-					href="${s:mvcUrl('CC#atualizarForm').arg(0, cartorio.id).build()}">
+				
+				
+				<a href="${s:mvcUrl('CC#atualizarForm').arg(0, cartorio.id).build()}">
 					<button class="btn"
 						style="background-color: DodgerBlue; border: none; color: white; padding: 12px 16px; font-size: 16px; cursor: pointer;">
-						<i class="far fa-edit">Alterar</i>	
+						<i class="far fa-edit"></i> Alterar	
 						</button>
-				</a> 
+				</a>
+				
 				<a href="${s:mvcUrl('CC#remover').arg(0, cartorio.id).build()}">
 					<button class="btn"
 						style="background-color: DodgerBlue; border: none; color: white; padding: 12px 16px; font-size: 16px; cursor: pointer;">
