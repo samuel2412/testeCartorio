@@ -19,53 +19,68 @@ import br.com.samuel.cartorio.models.Cartorio;
 @RequestMapping("/")
 public class CartorioController {
 
-	@Autowired CartorioDAO cartorioDao;
-	
-		@RequestMapping("/cadastro")
-	    public String form(){
-	        return "cartorio/form";
-	    }
-	    
-		@RequestMapping(method=RequestMethod.POST)
-	    public ModelAndView gravar(Cartorio cartorio){
-	        System.out.println(cartorio);
-	        cartorioDao.gravar(cartorio);
-	        return new ModelAndView("redirect:/");
-	    }
-		
-		@RequestMapping(method=RequestMethod.GET)
-		public ModelAndView listar(){
-		    List<Cartorio> cartorios = cartorioDao.listar();
-		    ModelAndView modelAndView = new ModelAndView("/cartorio/lista");
-		    modelAndView.addObject("cartorios", cartorios);
-		    return modelAndView;
+	@Autowired
+	CartorioDAO cartorioDao;
+
+	@RequestMapping("/cadastro")
+	public String form() {
+		return "cartorio/form";
+	}
+
+	@RequestMapping("/atualizar")
+	public String updateForm() {
+		return "cartorio/updateForm";
+	}
+
+	// create
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView gravar(Cartorio cartorio) {
+		System.out.println(cartorio);
+		cartorioDao.gravar(cartorio);
+		return new ModelAndView("redirect:/");
+	}
+
+	// read (detalhe,lista e json)
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView listar() {
+		List<Cartorio> cartorios = cartorioDao.listar();
+		ModelAndView modelAndView = new ModelAndView("/cartorio/lista");
+		modelAndView.addObject("cartorios", cartorios);
+		return modelAndView;
+	}
+
+	@RequestMapping("/cartorios")
+	@ResponseBody
+	public List<Cartorio> detalheJSON() {
+		return cartorioDao.listar();
+	}
+
+	@RequestMapping("/detalhe/{id}")
+	public ModelAndView detalhe(@PathVariable("id") Integer id) {
+		ModelAndView modelAndView = new ModelAndView("/cartorio/detalhe");
+		Cartorio cartorio = cartorioDao.find(id);
+		modelAndView.addObject("cartorio", cartorio);
+		return modelAndView;
+	}
+
+	// update
+	@RequestMapping("/atualizar/post")
+	@Transactional
+	public ModelAndView atualizar(Cartorio cartorio) {
+		cartorioDao.atualizar(cartorio);
+
+		return new ModelAndView("redirect:/");
+	}
+
+	// delete
+	@RequestMapping("/remover/{id}")
+	@Transactional
+	public ModelAndView remover(@PathVariable("id") Integer id) {
+		Cartorio cartorio = cartorioDao.find(id);
+		if (cartorio != null) {
+			cartorioDao.remover(cartorio);
 		}
-		
-		@RequestMapping("/remover/{id}")
-		@Transactional
-		public ModelAndView remover(@PathVariable("id") Integer id){
-			 Cartorio cartorio = cartorioDao.find(id);
-			 if(cartorio != null) {
-				 cartorioDao.remover(cartorio);
-			 }
-		    return new ModelAndView("redirect:/");
-		}
-		
-		@RequestMapping("/cartorios")
-		@ResponseBody
-		public List<Cartorio> detalheJSON(){
-		    return cartorioDao.listar();
-		}
-		
-		
-		@RequestMapping("/detalhe/{id}")
-		public ModelAndView detalhe(@PathVariable("id") Integer id){
-		    ModelAndView modelAndView = new ModelAndView("/cartorio/detalhe");
-		    Cartorio cartorio = cartorioDao.find(id);
-		    modelAndView.addObject("cartorio", cartorio);
-		    return modelAndView;
-		}
-		    
-		
-	
+		return new ModelAndView("redirect:/");
+	}
+
 }
