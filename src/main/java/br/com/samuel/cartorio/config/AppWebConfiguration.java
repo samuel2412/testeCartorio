@@ -5,11 +5,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import br.com.samuel.cartorio.controllers.HomeController;
+import br.com.samuel.cartorio.controllers.CartorioController;
 import br.com.samuel.cartorio.dao.CartorioDAO;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses={HomeController.class, CartorioDAO.class})
+@ComponentScan(basePackageClasses={CartorioController.class, CartorioDAO.class})
 public class AppWebConfiguration {
 	
 	@Bean

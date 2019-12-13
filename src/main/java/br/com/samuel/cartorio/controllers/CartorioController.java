@@ -27,10 +27,21 @@ public class CartorioController {
 		return new ModelAndView("cartorio/form");
 	}
 
-	@RequestMapping("/atualizar")
-	public ModelAndView updateForm() {
-		return new ModelAndView("cartorio/updateForm");
+	//@RequestMapping("/atualizar")
+	//public ModelAndView updateForm() {
+	//	return new ModelAndView("cartorio/updateForm");
+	//}
+	
+	@RequestMapping("/atualizar/{id}")
+	@Transactional
+	public ModelAndView atualizarForm(@PathVariable("id") Integer id) {
+		ModelAndView modelAndView = new ModelAndView("/cartorio/updateForm");
+		Cartorio cartorio = cartorioDao.find(id);
+		modelAndView.addObject("cartorio", cartorio);
+		return modelAndView;
 	}
+
+	
 
 	// create
 	@RequestMapping(method = RequestMethod.POST)
