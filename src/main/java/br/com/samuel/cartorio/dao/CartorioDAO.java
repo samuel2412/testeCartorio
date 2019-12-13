@@ -1,5 +1,7 @@
 package br.com.samuel.cartorio.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -17,6 +19,10 @@ public class CartorioDAO {
 
     public void gravar(Cartorio cartorio){
         manager.persist(cartorio);
+    }
+    
+    public List<Cartorio> listar(){
+        return manager.createQuery("select p from Cartorio p", Cartorio.class).getResultList();
     }
 	
 }
