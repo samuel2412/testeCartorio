@@ -25,4 +25,8 @@ public class CartorioDAO {
         return manager.createQuery("select p from Cartorio p", Cartorio.class).getResultList();
     }
 	
+    public Cartorio find(int id){
+        return manager.find(Cartorio.class, id);
+    }
+
 }
