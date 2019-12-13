@@ -21,14 +21,14 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link"
-					href="${s:mvcUrl('CC#listar').build()}"
+					href="${s:mvcUrl('HC#listar').build()}"
 					>Home</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="${s:mvcUrl('CC#form').build()}"
 					>Cadastro</a></li>
 					<li class="nav-item"><a class="nav-link"
 					href="${s:mvcUrl('CC#listaJSON').build()}"
-					>Cadastro</a></li>
+					>JSON</a></li>
 			</ul>
 
 		</div>

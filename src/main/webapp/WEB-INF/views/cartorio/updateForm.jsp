@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -27,26 +28,28 @@
 	<div class="container-md" style="margin-bottom: 35px;">
 		<h3>Alteração de cartório</h3>
 
-		<form action="/cartorio/atualizar/post" method="post">
+		<form:form action="${s:mvcUrl('CC#atualizar').build() }" method="post" commandName="cartorio">
 
 			<div class="form-group">
-				<label for="id">ID</label> <input type="number"
-					class="form-control" id="id" name="id" readonly="readonly" value="${cartorio.id}" }>
+				<label for="id">ID</label> 
+				<form:input path="id" cssClass="form-control" value="${cartorio.id}" readonly="true"/>
 			</div>
 
 			<div class="form-group">
-				<label for="nome">Novo Nome</label> <input type="text"
-					class="form-control" id="nome" name="nome" required>
+				<label>Novo Nome</label>
+				<form:input path="nome" cssClass="form-control"/>
+				
 			</div>
-
 			<div class="form-group">
-				<label for="endereco">Novo Endereço</label> <input type="text"
-					class="form-control" id="endereco" name="endereco">
+		        <label>Novo Endereco</label>
+				<form:input path="endereco" cssClass="form-control" />
+		       
 			</div>
+			
 
 
 			<button type="submit" class="btn btn-primary">Alterar</button>
-		</form>
+		</form:form>
 	</div>
 
 

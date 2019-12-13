@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -25,25 +27,31 @@
 
 
 	<div class="container-md" style="margin-bottom: 35px;">
-		<h3>Cadastro de cartórios</h3>		
+		<h3>Cadastro de cartórios</h3>
+
 		
-		<form action="/cartorio/" method="post">
-  <div class="form-group">
-    <label for="nome">Nome</label>
-    <input type="text" class="form-control" id="nome" name="nome" required>
-  </div>
-  
-  <div class="form-group">
-    <label for="endereco">Endereço</label>
-    <input type="text" class="form-control" id="endereco" name="endereco">
-  </div>
-  
-  
-  <button type="submit" class="btn btn-primary">Cadastrar</button>
-</form>
+	<form:form action="${s:mvcUrl('CC#gravar').build() }" method="post" commandName="cartorio">
+			<div class="form-group">
+				<label>Nome</label>
+				<form:input path="nome" cssClass="form-control"/>
+				
+			</div>
+			<div class="form-group">
+		        <label>Endereco</label>
+				<form:input path="endereco" cssClass="form-control" />
+		       
+			</div>
+			
+				
+		       			
+			
+			<button type="submit" class="btn btn-primary">Cadastrar</button>
+		</form:form>
+
+		
 	</div>
-	
-	
+
+
 
 
 

@@ -6,24 +6,26 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.samuel.cartorio.dao.CartorioDAO;
 import br.com.samuel.cartorio.models.Cartorio;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/cartorio")
 public class CartorioController {
 
 	@Autowired
 	CartorioDAO cartorioDao;
 
 	@RequestMapping("/cadastro")
-	public ModelAndView form() {
+	public ModelAndView form(Cartorio cartorio) {
 		return new ModelAndView("cartorio/form");
 	}
 
@@ -52,14 +54,7 @@ public class CartorioController {
 	}
 
 	// read (detalhe,lista e json)
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView listar() {
-		List<Cartorio> cartorios = cartorioDao.listar();
-		ModelAndView modelAndView = new ModelAndView("/cartorio/lista");
-		modelAndView.addObject("cartorios", cartorios);
-		return modelAndView;
-	}
-
+	
 	@RequestMapping("/cartorios")
 	@ResponseBody
 	public List<Cartorio> listaJSON() {
