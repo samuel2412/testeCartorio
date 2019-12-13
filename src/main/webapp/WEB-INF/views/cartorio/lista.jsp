@@ -22,10 +22,8 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 
-<!-- Google Material -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-
+<!--fontawesome-->
+	<script src="https://kit.fontawesome.com/d03c52ca4b.js" crossorigin="anonymous"></script>
 
 
 <title>Cartórios</title>
@@ -59,7 +57,7 @@
 						<td>${cartorio.endereco}</td>
 						<td><a
 							href="${s:mvcUrl('CC#detalhe').arg(0, cartorio.id).build()}">
-								<i class="material-icons"> details </i>
+								<i class="fas fa-info-circle"></i>
 						</a></td>
 
 					</tr>
