@@ -23,13 +23,13 @@ public class CartorioController {
 	CartorioDAO cartorioDao;
 
 	@RequestMapping("/cadastro")
-	public String form() {
-		return "cartorio/form";
+	public ModelAndView form() {
+		return new ModelAndView("cartorio/form");
 	}
 
 	@RequestMapping("/atualizar")
-	public String updateForm() {
-		return "cartorio/updateForm";
+	public ModelAndView updateForm() {
+		return new ModelAndView("cartorio/updateForm");
 	}
 
 	// create
@@ -51,7 +51,7 @@ public class CartorioController {
 
 	@RequestMapping("/cartorios")
 	@ResponseBody
-	public List<Cartorio> detalheJSON() {
+	public List<Cartorio> listaJSON() {
 		return cartorioDao.listar();
 	}
 
