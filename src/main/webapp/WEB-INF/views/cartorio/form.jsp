@@ -1,4 +1,4 @@
-<form action="/cartorio/submit" method="post">
+<form action="/cartorio/" method="post">
     <div>
         <label>Nome</label>
         <input type="text" name="nome" />
