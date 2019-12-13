@@ -28,5 +28,12 @@ public class CartorioDAO {
     public Cartorio find(int id){
         return manager.find(Cartorio.class, id);
     }
+//public void alterarProduto(Produto produto) {	
+//	manager.merge(produto);
+//}
+
+	public void remover(Cartorio cartorio) {
+		manager.remove(cartorio);
+	}
 
 }
